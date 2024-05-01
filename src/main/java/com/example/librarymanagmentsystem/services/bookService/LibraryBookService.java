@@ -1,18 +1,28 @@
 package com.example.librarymanagmentsystem.services.bookService;
 
+import com.example.librarymanagmentsystem.Models.bookModel.Author;
 import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
 import com.example.librarymanagmentsystem.Repositories.BookRepository;
 import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.exceptions.booksexception.BookNotFoundException;
+import com.example.librarymanagmentsystem.services.authorService.AuthorService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LibraryBookService implements BookService{
     private final BookRepository bookRepository;
-    public LibraryBookService(BookRepository bookRepository){
+
+    private final AuthorService authorService;
+    private final AuthorRepository authorRepository;
+
+    public LibraryBookService(BookRepository bookRepository, AuthorService authorService, AuthorRepository authorRepository){
         this.bookRepository= bookRepository;
+        this.authorService= authorService;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -22,9 +32,10 @@ public class LibraryBookService implements BookService{
     }
 
     @Override
-    public List<Book> getAllBookByAuthor(String author){
-        List<Book> books= bookRepository.findByAuthor_Name(author);
-        return books;
+    public List<Book> getAllBookByAuthor(String name){
+        Author author = authorService.getAuthorByName(name);
+        List<Book> book= bookRepository.findBookByAuthor(author);
+        return book;
     }
     @Override
     public List<Book> getAllBookByGenre(Genre genre){
@@ -40,8 +51,13 @@ public class LibraryBookService implements BookService{
 
     @Override
     public Book createBook(Book book){
-        return bookRepository.save(book);
-    }
+    Author author = book.getAuthor();
+    Book book1 = bookRepository.save(book);
+    Optional<Author> optionalAuthor = authorRepository.findById(author.getId());
+    book1.setAuthor(optionalAuthor.get());
+    return book1;
+}
+
 
     @Override
     public Book updateBook(Long id, Book newBook){

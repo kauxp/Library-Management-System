@@ -2,9 +2,11 @@ package com.example.librarymanagmentsystem.services.authorService;
 
 import com.example.librarymanagmentsystem.Models.bookModel.Author;
 import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LibraryAuthorService implements AuthorService{
     AuthorRepository authorRepository;
     LibraryAuthorService(AuthorRepository authorRepository){
