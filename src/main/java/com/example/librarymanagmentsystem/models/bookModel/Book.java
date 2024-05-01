@@ -1,4 +1,4 @@
-package com.example.librarymanagmentsystem.models.bookModel;
+package com.example.librarymanagmentsystem.Models.bookModel;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +10,6 @@ import java.util.Date;
 @Getter
 @Setter
 public class Book {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private Author author;

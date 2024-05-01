@@ -1,6 +1,5 @@
-package com.example.librarymanagmentsystem.models.bookModel;
+package com.example.librarymanagmentsystem.Models.bookModel;
 
-import com.paramjeet.librarymanagement.librarymanagement.models.patronModel.Patron;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;

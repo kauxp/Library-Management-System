@@ -1,4 +1,4 @@
-package com.example.librarymanagmentsystem.models.patronModel;
+package com.example.librarymanagmentsystem.Models.patronModel;
 
 import lombok.Getter;
 import lombok.Setter;
