@@ -31,8 +31,7 @@ public class LibraryPatronService implements PatronService{
 
     @Override
     public Patron createPatron(Patron patron){
-        patronRepository.save(patron);
-        return patron;
+        return patronRepository.save(patron);
     }
 
     @Override
