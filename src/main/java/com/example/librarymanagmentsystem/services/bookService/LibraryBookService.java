@@ -6,7 +6,9 @@ import com.example.librarymanagmentsystem.Models.bookModel.Genre;
 import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
 import com.example.librarymanagmentsystem.Repositories.BookRepository;
 import com.example.librarymanagmentsystem.dtos.BookDTO;
+import com.example.librarymanagmentsystem.exceptions.booksexception.AuthorNotFoundException;
 import com.example.librarymanagmentsystem.exceptions.booksexception.BookNotFoundException;
+import com.example.librarymanagmentsystem.exceptions.booksexception.GenreNotFoundException;
 import com.example.librarymanagmentsystem.services.authorService.AuthorService;
 import org.springframework.stereotype.Service;
 
@@ -26,21 +28,30 @@ public class LibraryBookService implements BookService {
     }
 
     @Override
-    public Book getBookByTitle(String title) {
+    public Book getBookByTitle(String title) throws BookNotFoundException{
         Book book = bookRepository.findByTitle(title);
+        if(book==null){
+            throw new BookNotFoundException("Invalid Title", title);
+        }
         return book;
     }
 
     @Override
-    public List<Book> getAllBookByAuthor(String name) {
+    public List<Book> getAllBookByAuthor(String name) throws AuthorNotFoundException {
         Author author = authorService.getAuthorByName(name);
         List<Book> book = bookRepository.findBookByAuthor(author);
+        if(book==null){
+            throw new AuthorNotFoundException("Invalid Author", name);
+        }
         return book;
     }
 
     @Override
-    public List<Book> getAllBookByGenre(Genre genre) {
+    public List<Book> getAllBookByGenre(Genre genre) throws GenreNotFoundException {
         List<Book> books = bookRepository.findByGenre(genre);
+        if(books==null){
+            throw new GenreNotFoundException("Invalid Genre", genre);
+        }
         return books;
     }
 
