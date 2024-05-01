@@ -25,7 +25,7 @@ public class LibraryPatronService implements PatronService{
 
     @Override
     public List<Patron> getAllPatrons(){
-        List<Patron> patrons= patronRepository.getAll();
+        List<Patron> patrons= patronRepository.findAll();
         return patrons;
     }
 
@@ -59,7 +59,7 @@ public class LibraryPatronService implements PatronService{
         patron.setPatronID(newPatron.getPatronID());
         patron.setName(newPatron.getName());
         patron.setEmail(newPatron.getEmail());
-        patron.setRegistrationDate(newPatron.getRegistrationDate());
+//        patron.setRegistrationDate(newPatron.getRegistrationDate());
         return patron;
     }
 }
