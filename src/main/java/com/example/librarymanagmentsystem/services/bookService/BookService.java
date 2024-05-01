@@ -3,6 +3,7 @@ package com.example.librarymanagmentsystem.services.bookService;
 
 import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.dtos.BookDTO;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface BookService {
 
     List<Book> getAllBooks();
 
-    Book createBook(Book book);
+    Book createBook(BookDTO book);
 
     Book updateBook(Long id, Book book);
 

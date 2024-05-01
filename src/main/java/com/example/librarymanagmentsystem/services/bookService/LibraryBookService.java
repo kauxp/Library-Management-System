@@ -5,6 +5,7 @@ import com.example.librarymanagmentsystem.Models.bookModel.Genre;
 import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
 import com.example.librarymanagmentsystem.Repositories.BookRepository;
 import com.example.librarymanagmentsystem.Models.bookModel.Book;
+import com.example.librarymanagmentsystem.dtos.BookDTO;
 import com.example.librarymanagmentsystem.exceptions.booksexception.BookNotFoundException;
 import com.example.librarymanagmentsystem.services.authorService.AuthorService;
 import org.springframework.stereotype.Service;
@@ -50,9 +51,10 @@ public class LibraryBookService implements BookService{
     }
 
     @Override
-    public Book createBook(Book book){
-    Author author = book.getAuthor();
-    Book book1 = bookRepository.save(book);
+    public Book createBook(BookDTO bookDTO){
+    Author author = authorService.getAuthorById(bookDTO.getAuthorId());
+    Book book1 = new Book();
+
     Optional<Author> optionalAuthor = authorRepository.findById(author.getId());
     book1.setAuthor(optionalAuthor.get());
     return book1;
@@ -83,7 +85,6 @@ public class LibraryBookService implements BookService{
         book.setGenre(newBook.getGenre());
         book.setISBN(newBook.getISBN());
         bookRepository.save(newBook);
-
         return book;
     }
 }
