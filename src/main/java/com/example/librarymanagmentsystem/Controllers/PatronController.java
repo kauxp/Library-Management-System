@@ -1,6 +1,7 @@
 package com.example.librarymanagmentsystem.Controllers;
 
 import com.example.librarymanagmentsystem.Models.patronModel.Patron;
+import com.example.librarymanagmentsystem.services.patronService.PatronService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,32 +10,37 @@ import java.util.List;
 @RequestMapping("/patrons")
 public class PatronController {
 
+    private PatronService patronService;
+    PatronController(PatronService patronService) {
+        this.patronService = patronService;
+    }
+
     // Get Patron by ID's
     @GetMapping("/{id}")
     public Patron getPatronById(@PathVariable("id") Long id) {
-        return null;
+        return patronService.getPatronById(id);
     }
-
 
     //Get all Patrons
     @GetMapping
     public List<Patron> getAllPatrons() {
-        return null;
+        return patronService.getAllPatrons();
     }
 
     @PostMapping
     public Patron createPatron(@RequestBody Patron patron) {
-        return null;
+        return patronService.createPatron(patron);
     }
 
     // Update Patron
     @PutMapping("/{id}")
     public Patron updatePatron(@PathVariable("id") Long id, @RequestBody Patron patron) {
-        return null;
+        return patronService.updatePatron(id, patron);
     }
 
     // Delete Patron
     @DeleteMapping("/{id}")
     public void deletePatron(@PathVariable("id") Long id) {
+        patronService.deletePatron(id);
     }
 }
