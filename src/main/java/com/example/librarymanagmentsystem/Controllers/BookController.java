@@ -3,6 +3,8 @@ package com.example.librarymanagmentsystem.Controllers;
 
 import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.dtos.BookDTO;
+import com.example.librarymanagmentsystem.services.bookService.BookService;
 import com.example.librarymanagmentsystem.services.bookService.LibraryBookService;
 import com.example.librarymanagmentsystem.services.bookService.LibraryBookService;
 import org.springframework.web.bind.annotation.*;
@@ -12,8 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/books")
 public class BookController {
-    private LibraryBookService bookService;
-    public BookController(LibraryBookService bookService){
+    private final BookService bookService;
+    public BookController(BookService bookService){
         this.bookService= bookService;
     }
     // Get Book by Title
@@ -52,8 +54,8 @@ public class BookController {
 
     // Create a Book
     @PostMapping
-    public Book createBook(@RequestBody Book book) {
-        return bookService.createBook(book);
+    public Book createBook(@RequestBody BookDTO bookDTO) {
+        return bookService.createBook(bookDTO);
     }
 
     // Update a Book

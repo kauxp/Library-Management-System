@@ -48,4 +48,9 @@ public class LibraryAuthorService implements AuthorService{
         authorRepository.save(newAuthor);
         return author;
     }
+
+    @Override
+    public Author getAuthorById(Long id) {
+        return authorRepository.findById(id).get();
+    }
 }
