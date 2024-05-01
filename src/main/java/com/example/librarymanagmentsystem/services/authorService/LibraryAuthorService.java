@@ -2,6 +2,7 @@ package com.example.librarymanagmentsystem.services.authorService;
 
 import com.example.librarymanagmentsystem.Models.bookModel.Author;
 import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
+import com.example.librarymanagmentsystem.exceptions.booksexception.AuthorNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,16 +11,22 @@ import java.util.List;
 public class LibraryAuthorService implements AuthorService{
     AuthorRepository authorRepository;
     LibraryAuthorService(AuthorRepository authorRepository){
+
         this.authorRepository = authorRepository;
     }
 
     @Override
-    public Author getAuthorByName(String name) {
-        return authorRepository.findByName(name);
+    public Author getAuthorByName(String name) throws AuthorNotFoundException {
+        Author author = authorRepository.findByName(name);
+        if(author==null){
+            throw new AuthorNotFoundException("Invalid Author", name);
+        }
+        return author;
     }
 
     @Override
     public List<Author> getAllAuthors() {
+
         return authorRepository.findAll();
     }
 
@@ -52,6 +59,7 @@ public class LibraryAuthorService implements AuthorService{
 
     @Override
     public Author getAuthorById(Long id) {
+
         return authorRepository.findById(id).get();
     }
 }
