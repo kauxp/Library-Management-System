@@ -1,7 +1,7 @@
 package com.example.librarymanagmentsystem.Models.lendingModel;
 
 import com.example.librarymanagmentsystem.Models.patronModel.Patron;
-import com.example.librarymanagmentsystem.models.bookModel.Book;
+import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import lombok.Getter;
 import lombok.Setter;
 
