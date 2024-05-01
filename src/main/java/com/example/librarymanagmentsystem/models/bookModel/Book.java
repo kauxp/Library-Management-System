@@ -1,4 +1,4 @@
-package com.example.librarymanagmentsystem.Models.bookModel;
+package com.example.librarymanagmentsystem.models.bookModel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +14,7 @@ public class Book {
     private Long bookId;
     private String title;
     @ManyToOne(cascade = CascadeType.ALL)
-    private Author author;
+    private Author author ;
     private Genre genre;
     private Date publicationDate;
     private String ISBN;
