@@ -1,7 +1,6 @@
 package com.example.librarymanagmentsystem.Models.bookModel;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+
 import lombok.Getter;
 import lombok.Setter;
 
