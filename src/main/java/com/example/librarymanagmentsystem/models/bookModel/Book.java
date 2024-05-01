@@ -1,7 +1,4 @@
-package com.example.librarymanagmentsystem.Models.bookModel;
 
-
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
