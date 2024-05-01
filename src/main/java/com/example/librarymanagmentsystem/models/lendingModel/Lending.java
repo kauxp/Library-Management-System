@@ -16,4 +16,6 @@ public class Lending {
     private Patron patron;
     private Date dateBorrowed;
     private Date dueDate;
+    private Date dateReturned;
+    private LendingStatus lendingStatus;
 }
