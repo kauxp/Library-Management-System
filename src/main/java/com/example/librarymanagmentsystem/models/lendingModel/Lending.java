@@ -1,8 +1,7 @@
-package com.example.librarymanagmentsystem.models.lendingModel;
+package com.example.librarymanagmentsystem.Models.lendingModel;
 
-
+import com.example.librarymanagmentsystem.Models.patronModel.Patron;
 import com.example.librarymanagmentsystem.models.bookModel.Book;
-import com.paramjeet.librarymanagement.librarymanagement.models.patronModel.Patron;
 import lombok.Getter;
 import lombok.Setter;
 

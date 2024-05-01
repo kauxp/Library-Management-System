@@ -1,4 +1,4 @@
-package com.example.librarymanagmentsystem.models.bookModel;
+package com.example.librarymanagmentsystem.Models.bookModel;
 
 public enum Genre {
     FICTION,
