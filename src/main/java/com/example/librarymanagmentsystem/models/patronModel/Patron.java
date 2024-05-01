@@ -22,5 +22,5 @@ public class Patron {
     private Long patronID;
     private String name;
     private String email;
-//    private Date registrationDate;
+    private Date registrationDate;
 }

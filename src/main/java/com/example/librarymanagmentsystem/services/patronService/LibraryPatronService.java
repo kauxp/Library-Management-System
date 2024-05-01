@@ -58,7 +58,7 @@ public class LibraryPatronService implements PatronService{
         newPatron.setPatronID(patron.getPatronID());
         patron.setName(newPatron.getName());
         patron.setEmail(newPatron.getEmail());
-//        patron.setRegistrationDate(newPatron.getRegistrationDate());
+        patron.setRegistrationDate(newPatron.getRegistrationDate());
         patronRepository.save(newPatron);
         return patron;
     }

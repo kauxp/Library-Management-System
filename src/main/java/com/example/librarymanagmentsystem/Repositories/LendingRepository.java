@@ -25,7 +25,7 @@ public interface LendingRepository extends JpaRepository<Lending, Long>
     void delete(Lending lending);
 
     // Get Lending by Patron ID
-//    List<Lending> findByPatronPatronId(Long id);
+//    List<Lending> findByPatronId(Long id);
 
     // Get Lending by Book ID
 //    List<Lending> findByBookTitle(String title);
