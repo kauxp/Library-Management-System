@@ -11,9 +11,9 @@ import java.util.Date;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long bookId;
     private String title;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Author author;
     private Genre genre;
     private Date publicationDate;

@@ -15,10 +15,10 @@ public class Lending {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long lendingID;
-//    @ManyToOne
-//    private Book book;
-//    @ManyToOne
-//    private Patron patron;
+    @ManyToOne
+    private Book book;
+    @ManyToOne
+    private Patron patron;
     private Date dateBorrowed;
     private Date dueDate;
     private Date dateReturned;
