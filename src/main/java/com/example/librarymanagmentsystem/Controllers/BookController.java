@@ -5,8 +5,6 @@ import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.Models.bookModel.Genre;
 import com.example.librarymanagmentsystem.dtos.BookDTO;
 import com.example.librarymanagmentsystem.services.bookService.BookService;
-import com.example.librarymanagmentsystem.services.bookService.LibraryBookService;
-import com.example.librarymanagmentsystem.services.bookService.LibraryBookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,8 +38,6 @@ public class BookController {
     public List<Book> getAllBookByGenre(@PathVariable("genre") Genre genre) {
         List<Book> books= bookService.getAllBookByGenre(genre);
         return books;
-
-
     }
 
     // Get All Books
@@ -49,7 +45,6 @@ public class BookController {
     public List<Book> getAllBooks() {
         List<Book> books= bookService.getAllBooks();
         return books;
-
     }
 
     // Create a Book
@@ -60,8 +55,8 @@ public class BookController {
 
     // Update a Book
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable("id") Long id, @RequestBody Book book) {
-        Book newBook = bookService.updateBook(id, book);
+    public Book updateBook(@PathVariable("id") Long id, @RequestBody BookDTO bookDTO) {
+        Book newBook = bookService.updateBook(id, bookDTO);
         return newBook;
     }
 

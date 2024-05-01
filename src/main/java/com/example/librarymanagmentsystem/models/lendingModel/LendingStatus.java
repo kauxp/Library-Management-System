@@ -1,4 +1,4 @@
-package com.example.librarymanagmentsystem.models.lendingModel;
+package com.example.librarymanagmentsystem.Models.lendingModel;
 
 public enum LendingStatus {
     BORROWED,
