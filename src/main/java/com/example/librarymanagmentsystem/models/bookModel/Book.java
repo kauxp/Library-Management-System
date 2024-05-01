@@ -1,6 +1,4 @@
-package com.example.librarymanagmentsystem.models.bookModel;
-import com.example.librarymanagmentsystem.Models.bookModel.Author;
-import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +6,13 @@ import java.util.Date;
 
 @Getter
 @Setter
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+    @ManyToOne
     private Author author;
     private Genre genre;
     private Date publicationDate;
