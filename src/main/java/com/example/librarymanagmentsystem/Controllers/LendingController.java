@@ -48,7 +48,7 @@ public class LendingController {
     }
 
     // Get Lending by Lending Status
-    @GetMapping("/{status}")
+    @GetMapping("status/{status}")
     public List<Lending> getLendingByStatus(@PathVariable("status") Enum status) {
         return lendingService.getLendingByStatus(status);
     }
