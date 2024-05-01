@@ -41,9 +41,9 @@ public class LibraryPatronService implements PatronService{
         if(patron==null){
             throw new PatronNotFoundException(id, "Invalid Patron ID");
         }
-
         this.update(patron, newPatron);
         return newPatron;
+//
     }
 
     @Override
@@ -56,10 +56,11 @@ public class LibraryPatronService implements PatronService{
     }
 
     private Patron update(Patron patron, Patron newPatron){
-        patron.setPatronID(newPatron.getPatronID());
+        newPatron.setPatronID(patron.getPatronID());
         patron.setName(newPatron.getName());
         patron.setEmail(newPatron.getEmail());
 //        patron.setRegistrationDate(newPatron.getRegistrationDate());
+        patronRepository.save(newPatron);
         return patron;
     }
 }

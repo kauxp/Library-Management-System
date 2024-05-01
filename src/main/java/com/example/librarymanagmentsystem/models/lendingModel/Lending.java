@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-
 public class Lending {
     private Long lendingID;
     private Book book;
