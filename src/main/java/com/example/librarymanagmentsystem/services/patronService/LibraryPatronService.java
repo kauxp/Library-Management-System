@@ -1,6 +1,5 @@
 package com.example.librarymanagmentsystem.services.patronService;
 
-//import com.example.librarymanagmentsystem.Exceptions.InvalidPatronException;
 import com.example.librarymanagmentsystem.Models.patronModel.Patron;
 import com.example.librarymanagmentsystem.Repositories.PatronRepository;
 import com.example.librarymanagmentsystem.exceptions.patronexceptions.PatronNotFoundException;
@@ -40,7 +39,7 @@ public class LibraryPatronService implements PatronService{
     public Patron updatePatron(Long id, Patron newPatron) throws PatronNotFoundException{
         Patron patron = patronRepository.findByPatronID(id);
         if(patron==null){
-            throw new PatronNotFoundException(id,"Invalid Patron ID");
+            throw new PatronNotFoundException(id, "Invalid Patron ID");
         }
 
         this.update(patron, newPatron);
