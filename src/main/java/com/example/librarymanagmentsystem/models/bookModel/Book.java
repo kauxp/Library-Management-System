@@ -1,6 +1,6 @@
-package com.example.librarymanagmentsystem.Models.bookModel;
-
-
+package com.example.librarymanagmentsystem.models.bookModel;
+import com.example.librarymanagmentsystem.Models.bookModel.Author;
+import com.example.librarymanagmentsystem.Models.bookModel.Genre;
 import lombok.Getter;
 import lombok.Setter;
 
