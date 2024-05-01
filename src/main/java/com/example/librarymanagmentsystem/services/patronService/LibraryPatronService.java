@@ -25,14 +25,13 @@ public class LibraryPatronService implements PatronService{
 
     @Override
     public List<Patron> getAllPatrons(){
-        List<Patron> patrons= patronRepository.getAll();
+        List<Patron> patrons= patronRepository.findAll();
         return patrons;
     }
 
     @Override
     public Patron createPatron(Patron patron){
-        patronRepository.save(patron);
-        return patron;
+        return patronRepository.save(patron);
     }
 
     @Override
@@ -41,9 +40,9 @@ public class LibraryPatronService implements PatronService{
         if(patron==null){
             throw new PatronNotFoundException(id, "Invalid Patron ID");
         }
-
         this.update(patron, newPatron);
         return newPatron;
+//
     }
 
     @Override
@@ -56,10 +55,11 @@ public class LibraryPatronService implements PatronService{
     }
 
     private Patron update(Patron patron, Patron newPatron){
-        patron.setPatronID(newPatron.getPatronID());
+        newPatron.setPatronID(patron.getPatronID());
         patron.setName(newPatron.getName());
         patron.setEmail(newPatron.getEmail());
-        patron.setRegistrationDate(newPatron.getRegistrationDate());
+//        patron.setRegistrationDate(newPatron.getRegistrationDate());
+        patronRepository.save(newPatron);
         return patron;
     }
 }
