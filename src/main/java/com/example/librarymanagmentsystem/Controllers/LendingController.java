@@ -2,7 +2,10 @@ package com.example.librarymanagmentsystem.Controllers;
 
 import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.Models.lendingModel.Lending;
+import com.example.librarymanagmentsystem.Models.lendingModel.LendingStatus;
+import com.example.librarymanagmentsystem.dtos.LendingDTO;
 import com.example.librarymanagmentsystem.services.lendingService.LendingService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 //import java.util.Date;
@@ -24,32 +27,32 @@ public class LendingController {
     }
 
     // Get Lending by Patron ID
-//    @GetMapping("/{patronId}")
-//    public List<Lending> getLendingByPatronId(@PathVariable("patronId") Long patronId) {
-//        return lendingService.getLendingByPatronId(patronId);
-//    }
+    @GetMapping("patrons/{patronId}")
+    public List<Lending> getLendingByPatronId(@PathVariable("patronId") Long patronId) {
+        return lendingService.getLendingByPatronId(patronId);
+    }
 
     // Get Lending by Book ID
-//    @GetMapping("/{bookTitle}")
-//    public List<Lending> getLendingByBookTitle(@PathVariable("bookTitle") String bookTitle) {
-//        return lendingService.getLendingByBookTitle(bookTitle);
-//    }
+    @GetMapping("books/{bookTitle}")
+    public List<Lending> getLendingByBookTitle(@PathVariable("bookTitle") String bookTitle) {
+        return lendingService.getLendingByBookTitle(bookTitle);
+    }
 
     // Get Lending by Date
-    @GetMapping("/{date}")
-    public List<Lending> getLendingByDate(@PathVariable("date") Date date) {
+    @GetMapping("lendingDate/{date}")
+    public List<Lending> getLendingByDate(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date date) {
         return lendingService.getLendingByLendingDate(date);
     }
 
     // Get Lending by Due Date
-    @GetMapping("/{dueDate}")
-    public List<Lending> getLendingByDueDate(@PathVariable("dueDate") Date dueDate) {
+    @GetMapping("dueDate/{dueDate}")
+    public List<Lending> getLendingByDueDate(@PathVariable("dueDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date dueDate) {
         return lendingService.getLendingByDueDate(dueDate);
     }
 
     // Get Lending by Lending Status
     @GetMapping("status/{status}")
-    public List<Lending> getLendingByStatus(@PathVariable("status") Enum status) {
+    public List<Lending> getLendingByStatus(@PathVariable("status") LendingStatus status) {
         return lendingService.getLendingByStatus(status);
     }
 
@@ -61,14 +64,14 @@ public class LendingController {
 
     //  Create a Lending
     @PostMapping
-    public Lending createLending(@RequestBody Lending lending) {
+    public Lending createLending(@RequestBody LendingDTO lending) {
         return lendingService.createLending(lending);
     }
 
     //  Update a Lending
     @PutMapping("/{lendingId}")
-    public Lending updateLending(@PathVariable("lendingId") Long lendingId, @RequestBody Lending lending) {
-        return lendingService.updateLending(lendingId, lending);
+    public Lending updateLending(@PathVariable("lendingId") Long lendingId, @RequestBody LendingDTO lendingDTO) {
+        return lendingService.updateLending(lendingId, lendingDTO);
     }
 
     //  Delete a Lending

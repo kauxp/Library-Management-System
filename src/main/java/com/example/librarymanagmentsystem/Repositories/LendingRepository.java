@@ -1,7 +1,9 @@
 package com.example.librarymanagmentsystem.Repositories;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Author;
+import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.Models.lendingModel.Lending;
+import com.example.librarymanagmentsystem.Models.lendingModel.LendingStatus;
+import com.example.librarymanagmentsystem.Models.patronModel.Patron;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,34 +11,19 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface LendingRepository extends JpaRepository<Lending, Long>
-{
-    @Override
-    // Get all Lendings
-    List<Lending> findAll();
+public interface LendingRepository extends JpaRepository<Lending, Long> {
 
-    // Get Lending by ID
+
     Lending findByLendingID(Long id);
 
-    // Save Lending
-    Lending save(Lending lending);
+    List<Lending> findByBook(Book book);
 
-    // Delete Lending
-    void delete(Lending lending);
+    List<Lending> findByPatron(Patron patron);
 
-    // Get Lending by Patron ID
-//    List<Lending> findByPatronId(Long id);
-
-    // Get Lending by Book ID
-//    List<Lending> findByBookTitle(String title);
-
-    // Get Lending by Lending Date
     List<Lending> findByDateBorrowed(Date date);
 
-    // Get Lending by Due Date
     List<Lending> findByDueDate(Date dueDate);
 
-    // Get Lending by Lending Status
-    List<Lending> findByLendingStatus(Enum status);
+    List<Lending> findByLendingStatus(LendingStatus status);
 
 }

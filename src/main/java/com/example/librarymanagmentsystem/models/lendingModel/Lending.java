@@ -28,4 +28,13 @@ public class Lending {
     private Date dueDate;
     private Date dateReturned;
     private LendingStatus lendingStatus;
+
+    public Lending(Book book, Patron patron, Date dateBorrowed, Date dueDate, Date dateReturned, LendingStatus lendingStatus) {
+        this.book = book;
+        this.patron = patron;
+        this.dateBorrowed = dateBorrowed;
+        this.dueDate = dueDate;
+        this.dateReturned = dateReturned;
+        this.lendingStatus = lendingStatus;
+    }
 }

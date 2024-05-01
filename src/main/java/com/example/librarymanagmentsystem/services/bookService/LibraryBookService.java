@@ -78,7 +78,6 @@ public class LibraryBookService implements BookService {
     }
 
     private Book update(Long id, BookDTO bookDTO) {
-        //using dto created
         Author author = authorService.getAuthorById(bookDTO.getAuthorId());
         Book existingBook = bookRepository.findById(id).get();
         existingBook.setTitle(bookDTO.getTitle());
