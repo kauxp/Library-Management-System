@@ -1,8 +1,9 @@
 package com.example.librarymanagmentsystem.services.patronService;
 
-import com.example.librarymanagmentsystem.Exceptions.InvalidPatronException;
+//import com.example.librarymanagmentsystem.Exceptions.InvalidPatronException;
 import com.example.librarymanagmentsystem.Models.patronModel.Patron;
 import com.example.librarymanagmentsystem.Repositories.PatronRepository;
+import com.example.librarymanagmentsystem.exceptions.patronexceptions.PatronNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +16,10 @@ public class LibraryPatronService implements PatronService{
         this.patronRepository=patronRepository;
     }
     @Override
-    public Patron getPatronById(Long id)  throws InvalidPatronException {
+    public Patron getPatronById(Long id)  throws PatronNotFoundException {
         Patron patron= patronRepository.findByPatronID(id);
         if(patron==null){
-            throw new InvalidPatronException("Invalid Patron ID");
+            throw new PatronNotFoundException(id, "Invalid Patron ID");
         }
         return patron;
     }
@@ -36,10 +37,10 @@ public class LibraryPatronService implements PatronService{
     }
 
     @Override
-    public Patron updatePatron(Long id, Patron newPatron) throws InvalidPatronException{
+    public Patron updatePatron(Long id, Patron newPatron) throws PatronNotFoundException{
         Patron patron = patronRepository.findByPatronID(id);
         if(patron==null){
-            throw new InvalidPatronException("Invalid Patron ID");
+            throw new PatronNotFoundException(id,"Invalid Patron ID");
         }
 
         this.update(patron, newPatron);
@@ -47,10 +48,10 @@ public class LibraryPatronService implements PatronService{
     }
 
     @Override
-    public void deletePatron(Long id) throws InvalidPatronException{
+    public void deletePatron(Long id) throws PatronNotFoundException{
         Patron patron = patronRepository.findByPatronID(id);
         if(patron==null){
-            throw new InvalidPatronException("Invalid Patron ID");
+            throw new PatronNotFoundException(id, "Invalid Patron ID");
         }
         patronRepository.delete(patron);
     }
