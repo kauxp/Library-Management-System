@@ -41,11 +41,10 @@ public class LibraryBookService implements BookService {
     @Override
     public List<Book> getAllBookByAuthor(String name) throws AuthorNotFoundException {
         Author author = authorService.getAuthorByName(name);
-        List<Book> book = bookRepository.findBookByAuthor(author);
-        if (book == null) {
+        if (author == null) {
             throw new AuthorNotFoundException("Invalid Author", name);
         }
-        return book;
+        return bookRepository.findBookByAuthor(author);
     }
 
     @Override
