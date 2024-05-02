@@ -9,10 +9,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/authors")
 public class AuthorControllers {
-    private final AuthorService authorService;
+    AuthorService authorService;
 
-    // Constructor
-    public AuthorControllers(AuthorService authorService) {
+    AuthorControllers(AuthorService authorService) {
         this.authorService = authorService;
     }
 
@@ -22,10 +21,16 @@ public class AuthorControllers {
         return authorService.getAllAuthors();
     }
 
-    // Create or Update an Author
+    // Create an Author
     @PostMapping()
-    public Author createOrUpdateAuthor(@RequestBody Author author) {
-        return authorService.createOrUpdateAuthor(author);
+    public Author createAuthor(@RequestBody Author author) {
+        return authorService.createAuthor(author);
+    }
+
+    // Update an Author
+    @PutMapping("/{id}")
+    public Author updateAuthor(@PathVariable("id") Long id, @RequestBody Author author) {
+        return authorService.updateAuthor(id, author);
     }
 
     // Delete an Author
