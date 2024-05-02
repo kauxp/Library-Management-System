@@ -1,17 +1,18 @@
 package com.example.librarymanagmentsystem.services.authorService;
 
-import com.example.librarymanagmentsystem.models.bookModel.Author;
 import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
 import com.example.librarymanagmentsystem.exceptions.booksexception.AuthorNotFoundException;
+import com.example.librarymanagmentsystem.models.bookModel.Author;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LibraryAuthorService implements AuthorService{
+public class LibraryAuthorService implements AuthorService {
     AuthorRepository authorRepository;
-    LibraryAuthorService(AuthorRepository authorRepository){
+
+    LibraryAuthorService(AuthorRepository authorRepository) {
 
         this.authorRepository = authorRepository;
     }
@@ -19,7 +20,7 @@ public class LibraryAuthorService implements AuthorService{
     @Override
     public Author getAuthorByName(String name) throws AuthorNotFoundException {
         Author author = authorRepository.findByName(name);
-        if(author==null){
+        if (author == null) {
             throw new AuthorNotFoundException("Invalid Author", name);
         }
         return author;
@@ -27,13 +28,11 @@ public class LibraryAuthorService implements AuthorService{
 
     @Override
     public List<Author> getAllAuthors() {
-
         return authorRepository.findAll();
     }
 
     @Override
     public Author createAuthor(Author author) {
-
         return authorRepository.save(author);
     }
 
@@ -47,10 +46,17 @@ public class LibraryAuthorService implements AuthorService{
     @Override
     public void deleteAuthor(Long id) {
         Author author = authorRepository.findById(id).get();
+        if (author == null) {
+            throw new AuthorNotFoundException("Exception", "Author with id " + id + " not found");
+        }
         authorRepository.delete(author);
     }
 
-    private Author update(Author author, Author newAuthor){
+    private Author update(Author author, Author newAuthor) {
+        if (author == null) {
+            throw new AuthorNotFoundException("Exception", "Author with id " + newAuthor.getId() + " not found");
+        }
+
         newAuthor.setId(author.getId());
         author.setName(newAuthor.getName());
         author.setDob(newAuthor.getDob());
@@ -59,11 +65,11 @@ public class LibraryAuthorService implements AuthorService{
     }
 
     @Override
-public Author getAuthorById(Long id) throws AuthorNotFoundException {
-    Optional<Author> authorOptional = authorRepository.findById(id);
-    if (!authorOptional.isPresent()) {
-        throw new AuthorNotFoundException("Exception","Author with id " + id + " not found");
+    public Author getAuthorById(Long id) throws AuthorNotFoundException {
+        Optional<Author> authorOptional = authorRepository.findById(id);
+        if (!authorOptional.isPresent()) {
+            throw new AuthorNotFoundException("Exception", "Author with id " + id + " not found");
+        }
+        return authorOptional.get();
     }
-    return authorOptional.get();
-}
 }
