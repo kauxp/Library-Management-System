@@ -20,10 +20,8 @@ This project implements a comprehensive library management system to efficiently
       - ID (Auto Increment)
       - Name
 
-3. **Genre:**
-   - **Fields:**
-      - ID (Auto Increment)
-      - Name
+3. **Genre:**(enum)
+   
 
 4. **Patron:**
    - **Fields:**
