@@ -1,10 +1,11 @@
 package com.example.librarymanagmentsystem.Controllers;
 
 
-import com.example.librarymanagmentsystem.Models.bookModel.Book;
-import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.models.bookModel.Book;
+import com.example.librarymanagmentsystem.models.bookModel.Genre;
 import com.example.librarymanagmentsystem.dtos.BookDTO;
 import com.example.librarymanagmentsystem.services.bookService.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +14,10 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookController {
     private final BookService bookService;
+    @Autowired
     public BookController(BookService bookService){
         this.bookService= bookService;
     }
-    // Get Book by Title
     @GetMapping("title/{title}")
     public Book getBookByTitle(@PathVariable("title") String title) {
         Book book = bookService.getBookByTitle(title);

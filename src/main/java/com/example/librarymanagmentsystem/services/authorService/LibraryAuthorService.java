@@ -1,11 +1,12 @@
 package com.example.librarymanagmentsystem.services.authorService;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Author;
+import com.example.librarymanagmentsystem.models.bookModel.Author;
 import com.example.librarymanagmentsystem.Repositories.AuthorRepository;
 import com.example.librarymanagmentsystem.exceptions.booksexception.AuthorNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LibraryAuthorService implements AuthorService{
@@ -58,8 +59,11 @@ public class LibraryAuthorService implements AuthorService{
     }
 
     @Override
-    public Author getAuthorById(Long id) {
-
-        return authorRepository.findById(id).get();
+public Author getAuthorById(Long id) throws AuthorNotFoundException {
+    Optional<Author> authorOptional = authorRepository.findById(id);
+    if (!authorOptional.isPresent()) {
+        throw new AuthorNotFoundException("Exception","Author with id " + id + " not found");
     }
+    return authorOptional.get();
+}
 }

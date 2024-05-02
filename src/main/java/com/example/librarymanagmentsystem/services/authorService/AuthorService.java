@@ -1,6 +1,6 @@
 package com.example.librarymanagmentsystem.services.authorService;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Author;
+import com.example.librarymanagmentsystem.models.bookModel.Author;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package com.example.librarymanagmentsystem.Repositories;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Author;
-import com.example.librarymanagmentsystem.Models.bookModel.Book;
-import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.models.bookModel.Author;
+import com.example.librarymanagmentsystem.models.bookModel.Book;
+import com.example.librarymanagmentsystem.models.bookModel.Genre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,10 +2,7 @@ package com.example.librarymanagmentsystem.dtos;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
-import com.example.librarymanagmentsystem.models.bookModel.*;
-import com.example.librarymanagmentsystem.models.patronModel.*;
-import com.example.librarymanagmentsystem.Models.lendingModel.LendingStatus;
+import com.example.librarymanagmentsystem.models.lendingModel.LendingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
