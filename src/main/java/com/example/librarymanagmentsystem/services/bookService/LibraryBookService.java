@@ -10,7 +10,6 @@ import com.example.librarymanagmentsystem.Models.bookModel.Author;
 import com.example.librarymanagmentsystem.Models.bookModel.Book;
 import com.example.librarymanagmentsystem.Models.bookModel.Genre;
 import com.example.librarymanagmentsystem.services.authorService.AuthorService;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -64,7 +63,7 @@ public class LibraryBookService implements BookService {
 
 
     @Override
-    public Book createBook(BookDTO bookDTO) throws AuthorNotFoundException, GenreNotFoundException{
+    public Book createBook(BookDTO bookDTO) throws AuthorNotFoundException, GenreNotFoundException {
         Author author = authorService.getAuthorById(bookDTO.getAuthorId());
 
         if (author == null) {
@@ -85,7 +84,6 @@ public class LibraryBookService implements BookService {
     }
 
     @Override
-
     public void deleteBook(Long id) {
         Book book = bookRepository.findByBookId(id);
         if (book == null) {
@@ -95,20 +93,20 @@ public class LibraryBookService implements BookService {
     }
 
     private Book update(Long id, BookDTO bookDTO) {
-    Optional<Book> existingBookOptional = bookRepository.findById(id);
-    if (!existingBookOptional.isPresent()) {
-        throw new BookNotFoundException("with id " + id + " not found", existingBookOptional.toString());
+        Optional<Book> existingBookOptional = bookRepository.findById(id);
+        if (!existingBookOptional.isPresent()) {
+            throw new BookNotFoundException("with id " + id + " not found", existingBookOptional.toString());
+        }
+        Book existingBook = existingBookOptional.get();
+        Author author = authorService.getAuthorById(bookDTO.getAuthorId());
+        if (author == null) {
+            throw new AuthorNotFoundException("Author with id " + bookDTO.getAuthorId() + " not found", author.getName());
+        }
+        existingBook.setTitle(bookDTO.getTitle());
+        existingBook.setAuthor(author);
+        existingBook.setGenre(bookDTO.getGenre());
+        existingBook.setPublicationDate(bookDTO.getPublicationDate());
+        existingBook.setISBN(bookDTO.getISBN());
+        return existingBook;
     }
-    Book existingBook = existingBookOptional.get();
-    Author author = authorService.getAuthorById(bookDTO.getAuthorId());
-    if (author == null) {
-        throw new AuthorNotFoundException("Author with id " + bookDTO.getAuthorId() + " not found", author.getName());
-    }
-    existingBook.setTitle(bookDTO.getTitle());
-    existingBook.setAuthor(author);
-    existingBook.setGenre(bookDTO.getGenre());
-    existingBook.setPublicationDate(bookDTO.getPublicationDate());
-    existingBook.setISBN(bookDTO.getISBN());
-    return existingBook;
-}
 }
