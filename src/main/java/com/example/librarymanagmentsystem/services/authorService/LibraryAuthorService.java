@@ -37,26 +37,27 @@ public class LibraryAuthorService implements AuthorService {
     }
 
     @Override
-    public Author updateAuthor(Long id, Author newAuthor) {
-        Author author = authorRepository.findById(id).get();
-        author = update(author, newAuthor);
-        return author;
+public Author updateAuthor(Long id, Author newAuthor) throws AuthorNotFoundException {
+    Optional<Author> authorOptional = authorRepository.findById(id);
+    if (!authorOptional.isPresent()) {
+        throw new AuthorNotFoundException("Author with id " + id + " not found", "Exception");
     }
+    Author author = authorOptional.get();
+    author = update(author, newAuthor);
+    return author;
+}
 
     @Override
     public void deleteAuthor(Long id) {
-        Author author = authorRepository.findById(id).get();
-        if (author == null) {
-            throw new AuthorNotFoundException("Exception", "Author with id " + id + " not found");
+        Optional<Author> authorOptional = authorRepository.findById(id);
+        if (!authorOptional.isPresent()) {
+            throw new AuthorNotFoundException("with id " + id + " not found", "Exception");
         }
+        Author author = authorOptional.get();
         authorRepository.delete(author);
     }
 
     private Author update(Author author, Author newAuthor) {
-        if (author == null) {
-            throw new AuthorNotFoundException("Exception", "Author with id " + newAuthor.getId() + " not found");
-        }
-
         newAuthor.setId(author.getId());
         author.setName(newAuthor.getName());
         author.setDob(newAuthor.getDob());
