@@ -1,8 +1,8 @@
 package com.example.librarymanagmentsystem.services.bookService;
 //package com.example.librarymanagmentsystem.models.bookModel.Book;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Book;
-import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.models.bookModel.Book;
+import com.example.librarymanagmentsystem.models.bookModel.Genre;
 import com.example.librarymanagmentsystem.dtos.BookDTO;
 
 import java.util.List;

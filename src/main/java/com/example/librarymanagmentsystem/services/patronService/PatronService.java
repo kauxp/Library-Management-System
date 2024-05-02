@@ -1,9 +1,7 @@
 package com.example.librarymanagmentsystem.services.patronService;
 
 import com.example.librarymanagmentsystem.exceptions.patronexceptions.PatronNotFoundException;
-import com.example.librarymanagmentsystem.Models.patronModel.Patron;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.example.librarymanagmentsystem.models.patronModel.Patron;
 
 import java.util.List;
 

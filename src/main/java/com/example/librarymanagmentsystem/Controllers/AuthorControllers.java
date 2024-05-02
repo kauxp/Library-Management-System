@@ -1,6 +1,6 @@
 package com.example.librarymanagmentsystem.Controllers;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Author;
+import com.example.librarymanagmentsystem.models.bookModel.Author;
 import com.example.librarymanagmentsystem.services.authorService.AuthorService;
 import org.springframework.web.bind.annotation.*;
 
