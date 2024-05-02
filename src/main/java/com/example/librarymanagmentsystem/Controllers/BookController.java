@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/book")
 public class BookController {
     private final BookService bookService;
     public BookController(BookService bookService){
         this.bookService= bookService;
     }
+
     // Get Book by Title
     @GetMapping("title/{title}")
     public Book getBookByTitle(@PathVariable("title") String title) {

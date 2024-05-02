@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/patrons")
+@RequestMapping("/patron")
 public class PatronController {
 
     private PatronService patronService;

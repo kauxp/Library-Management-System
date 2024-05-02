@@ -13,7 +13,7 @@ import java.util.*;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/lendings")
+@RequestMapping("/lending")
 public class LendingController {
     LendingService lendingService;
     LendingController(LendingService lendingService) {
@@ -27,13 +27,13 @@ public class LendingController {
     }
 
     // Get Lending by Patron ID
-    @GetMapping("patrons/{patronId}")
+    @GetMapping("patron/{patronId}")
     public List<Lending> getLendingByPatronId(@PathVariable("patronId") Long patronId) {
         return lendingService.getLendingByPatronId(patronId);
     }
 
     // Get Lending by Book ID
-    @GetMapping("books/{bookTitle}")
+    @GetMapping("book/{bookTitle}")
     public List<Lending> getLendingByBookTitle(@PathVariable("bookTitle") String bookTitle) {
         return lendingService.getLendingByBookTitle(bookTitle);
     }
@@ -56,7 +56,7 @@ public class LendingController {
         return lendingService.getLendingByStatus(status);
     }
 
-    //  Get all Lendings
+    //  Get all Lending
     @GetMapping
     public List<Lending> getAllLendings() {
         return lendingService.getAllLendings();

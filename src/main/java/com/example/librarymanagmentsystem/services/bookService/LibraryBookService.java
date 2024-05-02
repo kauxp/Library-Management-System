@@ -63,8 +63,11 @@ public class LibraryBookService implements BookService {
     }
 
     @Override
-    public Book createBook(BookDTO bookDTO) {
+    public Book createBook(BookDTO bookDTO) throws AuthorNotFoundException, GenreNotFoundException{
         Author author = authorService.getAuthorById(bookDTO.getAuthorId());
+        if(author==null){
+            throw new AuthorNotFoundException();
+        }
         Book book1 = new Book(bookDTO.getTitle(), author, bookDTO.getGenre(), bookDTO.getPublicationDate(), bookDTO.getISBN());
         bookRepository.save(book1);
         return book1;
