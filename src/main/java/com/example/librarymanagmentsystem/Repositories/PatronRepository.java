@@ -1,6 +1,6 @@
 package com.example.librarymanagmentsystem.Repositories;
 
-import com.example.librarymanagmentsystem.Models.patronModel.Patron;
+import com.example.librarymanagmentsystem.models.patronModel.Patron;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

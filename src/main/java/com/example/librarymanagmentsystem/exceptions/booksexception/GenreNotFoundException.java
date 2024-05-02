@@ -1,5 +1,5 @@
 package com.example.librarymanagmentsystem.exceptions.booksexception;
-import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.models.bookModel.Genre;
 
 import lombok.Getter;
 import lombok.Setter;

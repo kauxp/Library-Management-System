@@ -1,8 +1,7 @@
-package com.example.librarymanagmentsystem.Models.lendingModel;
+package com.example.librarymanagmentsystem.models.lendingModel;
 
-import com.example.librarymanagmentsystem.Models.patronModel.Patron;
-import com.example.librarymanagmentsystem.Models.bookModel.Book;
-import com.example.librarymanagmentsystem.Models.lendingModel.LendingStatus;
+import com.example.librarymanagmentsystem.models.patronModel.Patron;
+import com.example.librarymanagmentsystem.models.bookModel.Book;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

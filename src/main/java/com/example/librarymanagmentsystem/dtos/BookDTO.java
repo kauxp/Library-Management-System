@@ -1,9 +1,8 @@
 package com.example.librarymanagmentsystem.dtos;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Genre;
+import com.example.librarymanagmentsystem.models.bookModel.Genre;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
