@@ -1,4 +1,4 @@
-package com.example.librarymanagmentsystem.Models.patronModel;
+package com.example.librarymanagmentsystem.models.patronModel;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

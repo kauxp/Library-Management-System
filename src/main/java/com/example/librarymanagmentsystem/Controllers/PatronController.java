@@ -1,6 +1,6 @@
 package com.example.librarymanagmentsystem.Controllers;
 
-import com.example.librarymanagmentsystem.Models.patronModel.Patron;
+import com.example.librarymanagmentsystem.models.patronModel.Patron;
 import com.example.librarymanagmentsystem.services.patronService.PatronService;
 import org.springframework.web.bind.annotation.*;
 

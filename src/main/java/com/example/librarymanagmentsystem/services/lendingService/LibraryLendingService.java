@@ -1,9 +1,9 @@
 package com.example.librarymanagmentsystem.services.lendingService;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Book;
-import com.example.librarymanagmentsystem.Models.lendingModel.Lending;
-import com.example.librarymanagmentsystem.Models.lendingModel.LendingStatus;
-import com.example.librarymanagmentsystem.Models.patronModel.Patron;
+import com.example.librarymanagmentsystem.models.bookModel.Book;
+import com.example.librarymanagmentsystem.models.lendingModel.Lending;
+import com.example.librarymanagmentsystem.models.lendingModel.LendingStatus;
+import com.example.librarymanagmentsystem.models.patronModel.Patron;
 import com.example.librarymanagmentsystem.Repositories.LendingRepository;
 import com.example.librarymanagmentsystem.dtos.LendingDTO;
 import com.example.librarymanagmentsystem.exceptions.lendingexceptions.LendingHistoryNotFoundException;

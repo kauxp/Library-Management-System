@@ -1,8 +1,7 @@
 package com.example.librarymanagmentsystem.Controllers;
 
-import com.example.librarymanagmentsystem.Models.bookModel.Book;
-import com.example.librarymanagmentsystem.Models.lendingModel.Lending;
-import com.example.librarymanagmentsystem.Models.lendingModel.LendingStatus;
+import com.example.librarymanagmentsystem.models.lendingModel.Lending;
+import com.example.librarymanagmentsystem.models.lendingModel.LendingStatus;
 import com.example.librarymanagmentsystem.dtos.LendingDTO;
 import com.example.librarymanagmentsystem.services.lendingService.LendingService;
 import org.springframework.format.annotation.DateTimeFormat;

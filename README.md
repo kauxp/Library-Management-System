@@ -20,10 +20,8 @@ This project implements a comprehensive library management system to efficiently
       - ID (Auto Increment)
       - Name
 
-3. **Genre:**
-   - **Fields:**
-      - ID (Auto Increment)
-      - Name
+3. **Genre:**(enum)
+   
 
 4. **Patron:**
    - **Fields:**
@@ -39,6 +37,57 @@ This project implements a comprehensive library management system to efficiently
       - Patron ID
       - Date Borrowed
       - Due Date
+#### Requests:
+
+1. **Book Management:** \
+   - GET:\
+         - By Title: `/book/title/{title}`\
+         - By Author: `/book/author/{author}`\
+         - By Genre: `/book/genre/{genre}`\
+         - All: `/book`\
+   
+   - POST: `/book`\
+   
+   - PUT: `/book/{id}`\
+   
+   - DELETE: `/book/{id}`
+   
+2. **Author Management:**\
+   - GET:\
+      - All: `/author`\
+   
+   - POST: `/author`\
+   
+   - PUT: `/author/id`\
+   
+   - DELETE: `/author/id`
+   
+4. **Patron Management:**\
+   - GET:\
+      - By Id: `/patron/id`\
+      - All: `/patron`\
+   
+   - POST: `/patron`\
+   
+   - PUT: `/patron/{id}`\
+   
+   - DELETE: `/patron/{id}`
+   
+6. **Lending Management:**\
+   - GET:\
+      - By Id: `/lending`\
+      - By Patron ID: `/lending/patron/{patronId}`\
+      - By Book Title: `/lending/book/{bookTitle}`\
+      - By Lending Date: `/lending/lendingDate/{lendingdate}`\
+      - By Due Date: `/lending/dueDate/{dueDte}`\
+      - By Status: `/lending/status/{status}`\
+      - All: `/lending`\
+   
+   - POST: `/lending`\
+   
+   - PUT: `/lending/{id}`\
+
+   - DELETE: `/lending/{id}`
 
 #### Functionalities:
 
