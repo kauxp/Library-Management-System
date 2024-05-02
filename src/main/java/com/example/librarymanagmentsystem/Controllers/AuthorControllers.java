@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/authors")
+@RequestMapping("/author")
 public class AuthorControllers {
     AuthorService authorService;
 
@@ -16,13 +16,13 @@ public class AuthorControllers {
     }
 
     // Get All Authors
-    @GetMapping()
+    @GetMapping
     public List<Author> getAllAuthors() {
         return authorService.getAllAuthors();
     }
 
     // Create an Author
-    @PostMapping()
+    @PostMapping
     public Author createAuthor(@RequestBody Author author) {
         return authorService.createAuthor(author);
     }
